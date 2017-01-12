@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+<head>
+<!--<script data-require="angularjs@1.5.8" data-semver="1.5.8" src="https://opensource.keycdn.com/angularjs/1.5.8/angular.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
+
+ <!-- BOOTSTRAP stuff -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-controller="MainController as vm">
+<h4>Rnd#2</h4>
+<form name="MainForm" >
+<div class="form-group">
+
+<div class="container">
+<input-box place-holder="vm.placeholding();" 
+field-id="vm.fieldId();" 
+field-label="vm.fieldLabel();" 
+max-limit="vm.maxLimit();"
+is-required="vm.isFieldRequired();"
+pattern="vm.fieldPattern;" 
+empty-message="vm.emptyMessage();" 
+bbb="vm.checkPatternIBox();" 
+ng-modelx="vm.inputBoxNgModel" >
+</input-box>
+
+<div ng-if="vm.checkPatternReturnVal && vm.inputBoxNgModel.length === 5">
+<p class="h6"><b>!!!Valid Text!!! </b></p>
+</div>
+<div ng-if="!vm.inputBoxNgModel.length">
+  <p class="h6"><b>  Empty Text </b></p>
+</div>
+<div ng-if="vm.inputBoxNgModel.length < 5 ">
+  <p class="h6"><b>  Invalid text </b></p>
+  </div>
+</div>
+<br />
+
+<!--account number begins -->
+<div class="container">
+<account-number name="accountNo" 
+place-holder="vm.placeholding('Account Number');" 
+field-id="vm.fieldId('accountNumber');" 
+field-label="vm.fieldLabel('Account Number');" 
+max-limit="vm.maxLimit(18);"  
+is-required="vm.isFieldRequired('true')" 
+
+pattern="vm.fieldPatternAccNo;" 
+empty-message="vm.emptyMessage('Please enter Account Number');"  
+
+bbb="vm.checkPatternAccNo();" 
+ng-modelx="vm.testt" ></account-number>
+
+<div ng-if="vm.checkPatternReturnVal && vm.testt.length === 18">
+<p class="h6"><b>!!!Valid Account Number !!!</b></p>
+</div>
+        <div ng-if="!vm.testt.length">
+        <p class="h6"><b>Please enter Account Number</b></p>
+        </div>
+        <div ng-if="vm.testt.length < 18">
+        <p class="h6"><b>Invalid Account Number</b></p>
+        </div>
+        <!--account number ends -->
+      </div>
+</div> 
+
+<!--mobile number begins -->
+<div class="container">
+<mobile-number name="phoneNo" 
+place-holder="vm.placeholding('Mobile Number');" 
+field-id="vm.fieldId('mobileNumber');" 
+field-label="vm.fieldLabel('Mobile Number');" 
+max-limit="vm.maxLimit(10);" 
+is-required="vm.isFieldRequired('false')" 
+pattern="vm.fieldPatternMobNo;" 
+empty-message="vm.emptyMessage('Please enter Mobile Number');"  
+bbb="vm.checkPatternMobNo();" 
+ng-modelx="vm.mobileNoNgModel" >
+</mobile-number>
+
+<div ng-if="vm.checkPatternReturnVal && vm.mobileNoNgModel.length === 10">
+<p class="h6"><b>!!!Valid Mobile Number !!!</b></p>
+</div>
+<div ng-if="!vm.mobileNoNgModel.length">
+  <p class="h6"><b>Please enter Mobile Number</b></p>
+</div>
+<div ng-if="vm.mobileNoNgModel.length < 10">
+  <p class="h6"><b>Invalid Mobile Number</b></p>
+</div>
+</div> <!-- container ends -->
+<!--mobile number ends -->
+
+      <script src="script.js"></script>
+      <script src="MainController.js"></script>
+      <script src="accountNumber.js"></script>
+      <script src="inputBox.js"></script>
+      <script src="mobileNumber.js"></script>
+
+    </form>
+  </body>
+</html>
