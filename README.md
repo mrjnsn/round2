@@ -1,5 +1,7 @@
 # round2
 
+working example: https://plnkr.co/edit/aRwKL1yscEvxfK8CYL9Q?p=preview 
+
 inputBox:
 maxlength is 5
 takes only a-z.
